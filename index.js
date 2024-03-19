@@ -51,37 +51,26 @@ const list = [
         age: 44
     }
 ]
-
-// function getValue(list, atribut) {
-//     let resalt = []
-//     for (let i = 0; i < list.length; i++) {
-//         resalt.push(list[i][atribut]);
-//     }
-//     return resalt;
-// }
-
-// console.log(getValue(list , 'name'))
-
-
-// list.forEach(function(item) {
-//     let row = document.createElement('tr')
-//     row.innerHTML = `
-//     <td>${item[0]}</td>
-//     <td>${item[1]}</td>
-//     <td>${item[2]}</td>
-//     `
-//     document.querySelector('tbody').appendChild(row)
-// })
-
-function ids() {
-    let ids = [];
-    for(let i = 0; i < list.length; i++) {
-        ids.push(
-            [list[i]["id"], `${list[i]["name"]}`, `${list[i]["age"]}`]
-        )
+const headers = [
+    {
+        key: 'id'
+    },
+    {
+        key: 'name'
+    },
+    {
+        key: 'age'
     }
-    return ids
-}
+
+]
+
+const keys = ['id', 'name', 'age']
+
+Object.keys(list[0]).forEach(key => {
+    headers.push({key: key, title: key.toUpperCase()})
+})
+
+
 document.querySelector('body').innerHTML = `<table></table>`
 let title = document.createElement('tr')
 title.innerHTML = `
@@ -89,13 +78,23 @@ title.innerHTML = `
 <th>NAME</th>
 <th>AGE</th>
 `
-document.querySelector('table').appendChild(title)
-for(let i = 0; i < ids().length; i++) {
+headers.forEach(header => {
+    let th = document.createElement('th')
+    th.innerHTML = header.title
+    title.appendChild(th)
+})
+
+list.forEach(item => {
     let row = document.createElement('tr')
+    headers.forEach(header => {
+        let td = document.createElement('td')
+        td.innerHTML = item[header.key]
+        row.appendChild(td)
+    })
     row.innerHTML = `
-    <td>${ids()[i][0]}</td>
-    <td>${ids()[i][1]}</td>
-    <td>${ids()[i][2]}</td>
+    <td>${item.id}</td>
+    <td>${item.name}</td>
+    <td>${item.age}</td>
     `
-    document.querySelector('table').appendChild(row);
-}
+    document.querySelector('table').appendChild(row)
+})
