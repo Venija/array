@@ -82,8 +82,9 @@ list.forEach(item => {
     document.querySelector('table').appendChild(row)
 })
 
+console.log(list)
 
-headers.map(header => {
+headers.forEach(header => {
     let th = document.createElement('th')
     th.innerHTML = header.title
     title.appendChild(th)
@@ -91,13 +92,14 @@ headers.map(header => {
     document.querySelector(`table`).appendChild(th)
 })
 
-list.map(item => {
+const newList = list.map(item => {
     let row = document.createElement('tr')
-    headers.forEach(header => {
+        headers.forEach(header => {
         let td = document.createElement('td')
-        td.innerHTML = item[header.key] + 123
+        td.innerHTML = item[header.key] + '+123'
         row.appendChild(td)
-    })
+})
     document.querySelector('table').appendChild(row)
 })
-
+// document.querySelector('table').appendChild(newList)
+console.log(newList)
