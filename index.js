@@ -1,4 +1,4 @@
-let table = document.querySelector('#table');
+
 const list = [
     {
         id: 1,
@@ -52,16 +52,6 @@ const list = [
     }
 ]
 const headers = [
-    {
-        key: 'id'
-    },
-    {
-        key: 'name'
-    },
-    {
-        key: 'age'
-    }
-
 ]
 
 const keys = ['id', 'name', 'age']
@@ -72,16 +62,14 @@ Object.keys(list[0]).forEach(key => {
 
 
 document.querySelector('body').innerHTML = `<table></table>`
-let title = document.createElement('tr')
-title.innerHTML = `
-<th>ID</th>
-<th>NAME</th>
-<th>AGE</th>
-`
+let title = document.createElement('th')
+
 headers.forEach(header => {
     let th = document.createElement('th')
     th.innerHTML = header.title
     title.appendChild(th)
+
+    document.querySelector(`table`).appendChild(th)
 })
 
 list.forEach(item => {
@@ -91,10 +79,5 @@ list.forEach(item => {
         td.innerHTML = item[header.key]
         row.appendChild(td)
     })
-    row.innerHTML = `
-    <td>${item.id}</td>
-    <td>${item.name}</td>
-    <td>${item.age}</td>
-    `
     document.querySelector('table').appendChild(row)
 })
