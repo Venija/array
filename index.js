@@ -82,7 +82,7 @@ list.forEach(item => {
     document.querySelector('table').appendChild(row)
 })
 
-console.log(list)
+
 
 headers.forEach(header => {
     let th = document.createElement('th')
@@ -102,7 +102,6 @@ const newList = list.map(item => {
     document.querySelector('table').appendChild(row)
 })
 
-console.log(newList)
 
 headers.forEach(header => {
     let th = document.createElement('th')
@@ -123,3 +122,8 @@ const young = list.filter(item => {
 document.querySelector('table').appendChild(row)
 })
 
+const allAge = list.reduce((total, item) => {
+    return  total + item.age
+}, 0)
+
+console.log(allAge)
