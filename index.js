@@ -101,5 +101,25 @@ const newList = list.map(item => {
 })
     document.querySelector('table').appendChild(row)
 })
-// document.querySelector('table').appendChild(newList)
+
 console.log(newList)
+
+headers.forEach(header => {
+    let th = document.createElement('th')
+    th.innerHTML = header.title
+    title.appendChild(th)
+
+    document.querySelector(`table`).appendChild(th)
+})
+
+const young = list.filter(item => {
+    let row = document.createElement('tr')
+        headers.forEach(header => {
+        let td = document.createElement('td')
+        td.innerHTML = item[header.key]
+        if (item.age <= 30)
+        row.appendChild(td)
+})
+document.querySelector('table').appendChild(row)
+})
+
