@@ -3,3 +3,14 @@ table, th, td {
     text-align: center;
     padding: 10px;
 }
+body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.button1 {
+    margin-left: 10px;
+    display: flex;
+    text-align: center;
+    margin-left: 10px;
+}
