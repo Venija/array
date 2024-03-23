@@ -91,7 +91,10 @@ document.body.append(createbtn123)
 
 
 createbtn123.addEventListener('click', () => {
-document.querySelector('body').innerHTML = `<table2></table2>`
+let createtable2 = document.createElement('div')
+createtable2.className = 'table2'
+document.body.append(createtable2)
+document.querySelector('.table2').innerHTML = `<table2></table2>`
 let title2 = document.createElement('th')
 
 headers.forEach(header => {
@@ -120,7 +123,10 @@ createbtnsort.innerHTML = "до 30"
 document.body.append(createbtnsort)
 
 createbtnsort.addEventListener('click', () => {
-    document.querySelector('body').innerHTML = `<table3></table3>`
+    let createtable3 = document.createElement('div')
+    createtable3.className = 'table3'
+    document.body.append(createtable3)
+    document.querySelector('.table3').innerHTML = `<table3></table3>`
     let title3 = document.createElement('th')
 
 headers.forEach(header => {
