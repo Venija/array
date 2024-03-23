@@ -1,4 +1,4 @@
-let table = document.querySelector('#table');
+
 const list = [
     {
         id: 1,
@@ -51,51 +51,101 @@ const list = [
         age: 44
     }
 ]
+const headers = [
+]
 
-// function getValue(list, atribut) {
-//     let resalt = []
-//     for (let i = 0; i < list.length; i++) {
-//         resalt.push(list[i][atribut]);
-//     }
-//     return resalt;
-// }
+const keys = ['id', 'name', 'age']
 
-// console.log(getValue(list , 'name'))
+Object.keys(list[0]).forEach(key => {
+    headers.push({key: key, title: key.toUpperCase()})
+})
 
 
-// list.forEach(function(item) {
-//     let row = document.createElement('tr')
-//     row.innerHTML = `
-//     <td>${item[0]}</td>
-//     <td>${item[1]}</td>
-//     <td>${item[2]}</td>
-//     `
-//     document.querySelector('tbody').appendChild(row)
-// })
-
-function ids() {
-    let ids = [];
-    for(let i = 0; i < list.length; i++) {
-        ids.push(
-            [list[i]["id"], `${list[i]["name"]}`, `${list[i]["age"]}`]
-        )
-    }
-    return ids
-}
 document.querySelector('body').innerHTML = `<table></table>`
-let title = document.createElement('tr')
-title.innerHTML = `
-<th>ID</th>
-<th>NAME</th>
-<th>AGE</th>
-`
-document.querySelector('table').appendChild(title)
-for(let i = 0; i < ids().length; i++) {
+let title = document.createElement('th')
+
+headers.forEach(header => {
+    let th = document.createElement('th')
+    th.innerHTML = header.title
+    title.appendChild(th)
+
+    document.querySelector(`table`).appendChild(th)
+})
+
+list.forEach(item => {
     let row = document.createElement('tr')
-    row.innerHTML = `
-    <td>${ids()[i][0]}</td>
-    <td>${ids()[i][1]}</td>
-    <td>${ids()[i][2]}</td>
-    `
-    document.querySelector('table').appendChild(row);
-}
+    headers.forEach(header => {
+        let td = document.createElement('td')
+        td.innerHTML = item[header.key]
+        row.appendChild(td)
+    })
+    document.querySelector('table').appendChild(row)
+})
+
+let createbtn123 = document.createElement('button')
+createbtn123.className = 'button123'
+createbtn123.innerHTML = "сделать 123"
+
+document.body.append(createbtn123)
+
+
+
+createbtn123.addEventListener('click', () => {
+document.querySelector('body').innerHTML = `<table2></table2>`
+let title2 = document.createElement('th')
+
+headers.forEach(header => {
+    let th = document.createElement('th')
+    th.innerHTML = header.title
+    title2.appendChild(th)
+
+    document.querySelector(`table2`).appendChild(th)
+})
+
+const newList = list.map(item => {
+    let row = document.createElement('tr')
+        headers.forEach(header => {
+        let td = document.createElement('td')
+        td.innerHTML = item[header.key] + '+123'
+        row.appendChild(td)
+})
+    document.querySelector('table2').appendChild(row)
+})
+})
+
+let createbtnsort = document.createElement('button')
+createbtnsort.className = 'buttonsort'
+createbtnsort.innerHTML = "до 30"
+
+document.body.append(createbtnsort)
+
+createbtnsort.addEventListener('click', () => {
+    document.querySelector('body').innerHTML = `<table3></table3>`
+    let title3 = document.createElement('th')
+
+headers.forEach(header => {
+    let th = document.createElement('th')
+    th.innerHTML = header.title
+    title3.appendChild(th)
+
+    document.querySelector(`table3`).appendChild(th)
+})
+
+const young = list.filter(item => {
+    let row = document.createElement('tr')
+        headers.forEach(header => {
+        let td = document.createElement('td')
+        td.innerHTML = item[header.key]
+        if (item.age <= 30)
+        row.appendChild(td)
+})
+document.querySelector('table3').appendChild(row)
+})
+})
+
+
+const allAge = list.reduce((total, item) => {
+    return  total + item.age
+}, 0)
+
+console.log(allAge)
