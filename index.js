@@ -92,6 +92,7 @@ document.body.append(createbtn123)
 
 createbtn123.addEventListener('click', () => {
 let createtable2 = document.createElement('div')
+if(document.querySelector('.table2')) return;
 createtable2.className = 'table2'
 document.body.append(createtable2)
 document.querySelector('.table2').innerHTML = `<table2></table2>`
@@ -101,7 +102,7 @@ headers.forEach(header => {
     let th = document.createElement('th')
     th.innerHTML = header.title
     title2.appendChild(th)
-
+    
     document.querySelector(`table2`).appendChild(th)
 })
 
@@ -120,35 +121,37 @@ let createbtnsort = document.createElement('button')
 createbtnsort.className = 'buttonsort'
 createbtnsort.innerHTML = "до 30"
 
-document.body.append(createbtnsort)
+document.body.appendChild(createbtnsort)
 
 createbtnsort.addEventListener('click', () => {
-    let createtable3 = document.createElement('div')
+    let createtable3 = document.createElement('div') 
+    if(document.querySelector('#filtred-table')) 
     createtable3.className = 'table3'
-    document.body.append(createtable3)
+    createtable3.id = 'filtred-table'
+    document.body.appendChild(createtable3)
     document.querySelector('.table3').innerHTML = `<table3></table3>`
     let title3 = document.createElement('th')
-
-headers.forEach(header => {
-    let th = document.createElement('th')
-    th.innerHTML = header.title
-    title3.appendChild(th)
-
-    document.querySelector(`table3`).appendChild(th)
-})
-
-const young = list.filter(item => {
-    let row = document.createElement('tr')
+    
+    headers.forEach(header => {
+        let th = document.createElement('th')
+        th.innerHTML = header.title
+        title3.appendChild(th)
+        
+        document.querySelector(`table3`).appendChild(th)
+        })
+    
+    const young = list.filter(item => {
+        let row = document.createElement('tr')
         headers.forEach(header => {
-        let td = document.createElement('td')
-        td.innerHTML = item[header.key]
-        if (item.age <= 30)
-        row.appendChild(td)
-})
-document.querySelector('table3').appendChild(row)
-})
-})
-
+            let td = document.createElement('td')
+            td.innerHTML = item[header.key]
+            if (item.age <= 30)
+            row.appendChild(td)
+            })
+    document.querySelector('table3').appendChild(row)
+        })  
+    })
+    
 
 const allAge = list.reduce((total, item) => {
     return  total + item.age
