@@ -86,15 +86,19 @@ let createbtn123 = document.createElement('button')
 createbtn123.className = 'button123'
 createbtn123.innerHTML = "сделать 123"
 
-document.body.append(createbtn123)
+document.body.appendChild(createbtn123)
 
 
 
 createbtn123.addEventListener('click', () => {
+    if(document.querySelector('.table2')) {
+        document.querySelector('.table2').remove()
+        return
+    }
 let createtable2 = document.createElement('div')
 if(document.querySelector('.table2')) return;
 createtable2.className = 'table2'
-document.body.append(createtable2)
+document.body.appendChild(createtable2)
 document.querySelector('.table2').innerHTML = `<table2></table2>`
 let title2 = document.createElement('th')
 
@@ -124,8 +128,11 @@ createbtnsort.innerHTML = "до 30"
 document.body.appendChild(createbtnsort)
 
 createbtnsort.addEventListener('click', () => {
+    if(document.querySelector('.table3')) {
+        document.querySelector('.table3').remove()
+        return
+    }
     let createtable3 = document.createElement('div') 
-    if(document.querySelector('#filtred-table')) 
     createtable3.className = 'table3'
     createtable3.id = 'filtred-table'
     document.body.appendChild(createtable3)
@@ -157,4 +164,21 @@ const allAge = list.reduce((total, item) => {
     return  total + item.age
 }, 0)
 
-console.log(allAge)
+// console.log('Общий возраст '+ +allAge)
+
+let createbtnallage = document.createElement('button')
+createbtnallage.className = 'buttonallage'
+createbtnallage.innerHTML = "Общий возраст"
+document.body.appendChild(createbtnallage)
+
+createbtnallage.addEventListener ('click', () => {
+    if(document.querySelector('.totalage')) {
+        document.querySelector('.totalage').remove()
+        return
+    }
+    let row1 = document.createElement('tr')
+    row1.className = 'totalage'
+    row1.innerHTML = 'Общий возраст '+ +allAge
+    document.querySelector('table').appendChild(row1)
+})
+
