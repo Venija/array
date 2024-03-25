@@ -182,3 +182,30 @@ createbtnallage.addEventListener ('click', () => {
     document.querySelector('table').appendChild(row1)
 })
 
+
+
+
+let createbtnsortup = document.createElement('button')
+createbtnsortup.className = 'createbtnsortup'
+createbtnsortup.innerHTML = "по возростанию"
+document.body.appendChild(createbtnsortup)
+
+
+createbtnsortup.addEventListener('click', () => {
+    let sortup = list.sort(function (a,b) {
+        return a.age - b.age
+    })
+    console.log(sortup)
+})
+
+let createbtnsortdown = document.createElement('button')
+createbtnsortdown.className = 'createbtnsortdown'
+createbtnsortdown.innerHTML = "по убыванию"
+document.body.appendChild(createbtnsortdown)
+
+createbtnsortdown.addEventListener('click', () => {
+    let sortdown = list.sort(function (a,b) {
+    return b.age - a.age
+    })
+    console.log(sortdown)
+})
